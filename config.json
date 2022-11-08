@@ -2,6 +2,28 @@
   "name": "Paula Jardim",
   "job": "Front-end Developer",
   "github": "paulajardimf",
+  "favorites": [
+    { "name": "Coisa de Nerd",
+      "nickname": "coisadenerd",
+      "image": "https://yt3.ggpht.com/ytc/AMLnZu9XCumF881WgJ5yEIZp7BWuImKNC9T-IwVUEGeXyg=s88-c-k-c0x00ffffff-no-rj"
+    },
+    { "name": "Código Fonte TV",
+      "nickname": "codigofontetv",
+      "image": "https://yt3.ggpht.com/ytc/AMLnZu8lUVeJ1TiYevFOzZPNQFEQSDHc-TwiYKMcQpxpvA=s88-c-k-c0x00ffffff-no-rj"
+    },
+    { "name": "quero ser dev",
+      "nickname": "queroserdev",
+      "image": "https://yt3.ggpht.com/4OuZyAB4_NPFo2oepZA-AmvwtimZkXLeLBxeLtcU2sg7LiUydXtOVpngCUC8shL47KhlvdyXbMg=s88-c-k-c0x00ffffff-no-rj"
+    },
+    { "name": "MTsims",
+      "nickname": "marcioCE2",
+      "image": "https://yt3.ggpht.com/ytc/AMLnZu_WOh7sksp7rbeBRGe69Y7ZSIc-kqjLQ_LKEstm=s88-c-k-c0x00ffffff-no-rj"
+    },
+    { "name": "Jovem Nerd",
+      "nickname": "JovemNerd",
+      "image": "https://yt3.ggpht.com/ytc/AMLnZu9pDOp93R9V0cp_CodoiMk8FM60-46FkdDasQ1i=s88-c-k-c0x00ffffff-no-rj"
+    }
+  ],
   "playlists": {
     "jogos": [
       {
@@ -10,9 +32,9 @@
         "thumb": "https://img.youtube.com/vi/QsqatJxAUtk/hqdefault.jpg"
       },
       {
-        "title": "Frostpunk - Neve e Steak tartare",
-        "url": "https://www.youtube.com/watch?v=O8jtAyPuhNg",
-        "thumb": "https://img.youtube.com/vi/O8jtAyPuhNg/hqdefault.jpg"
+        "title": "Cult Of The Lamb - O Culto do Lambda",
+        "url": "https://www.youtube.com/watch?v=WCgao699L0Y&t",
+        "thumb": "https://i.ytimg.com/vi/WCgao699L0Y/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&amp;rs=AOn4CLBPbpIIkFZYaqB27RG0O0aPyYlk_w"
       },
       {
         "title": "Gas Station Simulator - 8 dias sem dormir!",
