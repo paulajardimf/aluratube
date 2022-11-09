@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import config from "../config.json";
 import styled from "styled-components";
 import Menu from "../src/components/Menu";
-import { CSSReset } from "../src/components/CSSReset";
 import { StyledTimeline } from "../src/components/Timeline";
 import { StyledFavoriteList } from "../src/components/FavoriteList";
 
@@ -11,7 +10,6 @@ export default function HomePage() {
 
   return (
     <>
-      <CSSReset />
       <div
         style={{
           display: "flex",
@@ -36,6 +34,8 @@ export default function HomePage() {
 // }
 
 const StyledHeader = styled.div`
+  background-color: ${({ theme }) => theme.backgroundLevel1};
+
   .foto-banner {
     width: 100%;
     height: 230px;
@@ -60,6 +60,9 @@ const StyledHeader = styled.div`
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    a {
+      color: ${({ theme }) => theme.textColorBase};
+    }
   }
 `;
 
@@ -75,7 +78,11 @@ function Header() {
         />
         <div className="info-text">
           <h2>{config.name}</h2>
-          <a href={`https://github.com/${config.github}`} target="_blank" rel="noopener noreferrer">
+          <a
+            href={`https://github.com/${config.github}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <p>{config.job}</p>
           </a>
         </div>
@@ -101,7 +108,12 @@ function Timeline({ searchValue, ...props }) {
                 })
                 .map((video, index) => {
                   return (
-                    <a href={video.url} key={index}>
+                    <a
+                      href={video.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      key={index}
+                    >
                       <img src={video.thumb} alt="" />
                       <span>{video.title}</span>
                     </a>

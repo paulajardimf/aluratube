@@ -9,6 +9,8 @@ export const CSSReset = createGlobalStyle`
   }
   body {
     font-family: sans-serif;
+    background-color: ${({ theme }) => theme.backgroundBase};
+    color: ${({ theme }) => theme.textColorBase};
   }
   /* NextJS */
   html {
@@ -34,5 +36,25 @@ export const CSSReset = createGlobalStyle`
     &:focus {
       opacity: .5;
     }
+  }
+  
+  /* Barra de rolagem */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: black transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px; /* A altura só é vista quando a rolagem é horizontal */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    padding: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.borderBase};
   }
 `;
