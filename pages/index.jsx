@@ -1,11 +1,14 @@
+import React, { useState } from "react";
 import config from "../config.json";
 import styled from "styled-components";
 import Menu from "../src/components/Menu";
 import { CSSReset } from "../src/components/CSSReset";
 import { StyledTimeline } from "../src/components/Timeline";
-import { StyledFavouriteList } from "../src/components/FavouriteList";
+import { StyledFavoriteList } from "../src/components/FavoriteList";
 
 export default function HomePage() {
+  const [valorDoFiltro, setValorDoFiltro] = React.useState("");
+
   return (
     <>
       <CSSReset />
@@ -16,9 +19,12 @@ export default function HomePage() {
           flex: 1,
         }}
       >
-        <Menu />
+        <Menu
+          valorDoFiltro={valorDoFiltro}
+          setValorDoFiltro={setValorDoFiltro}
+        />
         <Header />
-        <Timeline playlists={config.playlists} />
+        <Timeline searchValue={valorDoFiltro} playlists={config.playlists} />
         <FavoriteList favorites={config.favorites} />
       </div>
     </>
@@ -32,7 +38,7 @@ export default function HomePage() {
 const StyledHeader = styled.div`
   .foto-banner {
     width: 100%;
-    height: 24rem;
+    height: 230px;
     object-fit: cover;
     object-position: 40px 0 0 0;
   }
@@ -48,31 +54,36 @@ const StyledHeader = styled.div`
     padding: 16px 32px;
     gap: 16px;
   }
+  .info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
 `;
 
 function Header() {
   return (
     <StyledHeader>
-      <img
-        src="https://images.unsplash.com/photo-1592609931095-54a2168ae893?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1512&q=230"
-        alt="banner"
-        className="foto-banner"
-      />
+      <img src={config.background} alt="banner" className="foto-banner" />
       <section className="user-info">
         <img
           src={`https://github.com/${config.github}.png`}
           alt="foto de perfil"
           className="foto-perfil"
         />
-        <div>
+        <div className="info-text">
           <h2>{config.name}</h2>
-          <p>{config.job}</p>
+          <a href={`https://github.com/${config.github}`} target="_blank" rel="noopener noreferrer">
+            <p>{config.job}</p>
+          </a>
         </div>
       </section>
     </StyledHeader>
   );
 }
-function Timeline(props) {
+function Timeline({ searchValue, ...props }) {
   const playlistNames = Object.keys(props.playlists);
   return (
     <StyledTimeline>
@@ -82,14 +93,20 @@ function Timeline(props) {
           <section key={index}>
             <h2>{playlistName}</h2>
             <div>
-              {videos.map((video, index) => {
-                return (
-                  <a href={video.url} key={index}>
-                    <img src={video.thumb} alt="" />
-                    <span>{video.title}</span>
-                  </a>
-                );
-              })}
+              {videos
+                .filter((video) => {
+                  const titleNormalized = video.title.toLowerCase();
+                  const searchValueNormalized = searchValue.toLowerCase();
+                  return titleNormalized.includes(searchValueNormalized);
+                })
+                .map((video, index) => {
+                  return (
+                    <a href={video.url} key={index}>
+                      <img src={video.thumb} alt="" />
+                      <span>{video.title}</span>
+                    </a>
+                  );
+                })}
             </div>
           </section>
         );
@@ -101,12 +118,12 @@ function Timeline(props) {
 function FavoriteList(props) {
   console.log(props);
   return (
-    <StyledFavouriteList>
+    <StyledFavoriteList>
       <h2>Favoritos</h2>
       <div className="favorite-item">
         {props.favorites.map((favorite, index) => {
           return (
-            <section key={index}>
+            <section className="info-favorite" key={index}>
               <a
                 href={`https://www.youtube.com/user/${favorite.nickname}`}
                 target="_blank"
@@ -119,6 +136,6 @@ function FavoriteList(props) {
           );
         })}
       </div>
-    </StyledFavouriteList>
+    </StyledFavoriteList>
   );
 }
